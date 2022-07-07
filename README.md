@@ -16,7 +16,7 @@ Second terminal
 
 ## Run
 
-`nmp run server`
+`npm run server`
 
 ## Client
 
