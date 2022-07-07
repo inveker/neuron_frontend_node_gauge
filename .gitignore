@@ -1,0 +1,16 @@
+node_modules
+
+#Hardhat files
+cache
+artifacts
+typechain
+abi
+.env
+.DS_Store
+zapper
+typechain-types
+.vscode
+.idea
+bin
+deployments
+soljson*

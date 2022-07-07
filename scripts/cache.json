@@ -1,0 +1,11 @@
+{
+    "neuronToken": "0xB419F38aB1B5CBf301e0A2D711ceAda365573377",
+    "axon": "0x10B05d9CdB828516d6525F27DfF982C6094D2fc4",
+    "masterChef": "0xDCC4FcD2e9aDeB7a4F7688B3d002298Fd5319CB6",
+    "controller": "0xB329ac56BD00c4dE39bAD468b21E8CfE48413a7b",
+    "gaugesDistributor": "0x95120608f4A0Dfd1281506a27904581C6cC9B47d",
+    "gaugeImplementation": "0xcCf967c23EEB1A68e1Eb5E063f70D6E3b61F3743",
+    "sushiPair": "0x98E7bd9Cd24bea8930C800f1979b37565D000038",
+    "gauge": "0xA69CE8CA445043BE72926a7a6Bd6D3434AEF4863",
+    "initSnapshot": "0x4b"
+}
