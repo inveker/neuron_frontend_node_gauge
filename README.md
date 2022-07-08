@@ -20,6 +20,9 @@ Second terminal
 
 ## Client
 
+
+RPC URL: http://127.0.0.1:8545/
+
 Assets - see folder ./assets
 
 Wallets[0] - deployer
