@@ -8,7 +8,7 @@ const app = express()
 app.use(cors())
 const port = CONFIG.serverPort
 
-app.post('/init', async (req, res) => {
+async function init() {
   await killPortProcess(8545)
 
   async function initNode(): Promise<string> {
@@ -68,10 +68,45 @@ app.post('/init', async (req, res) => {
   const host = await initNode()
   const result = await deploy()
 
-  res.status(200).send({
+  return {
     host,
     result,
+  }
+}
+
+app.post('/init', async (req, res) => {
+  res.status(200).send(await init())
+})
+
+app.post('/data', async (req, res) => {
+  await new Promise<any>(resolve => {
+    const process = execute('npx hardhat run ./scripts/data.ts --network localhost')
+
+    process.stdout.on('data', data => {
+      console.log(`data stdout: ${data}`)
+        const find = 'Data result: '
+        if (data.includes(find)) {
+          const result = `${data}`.replace(find, '')
+          resolve(result)
+        }
+    })
+
+    process.stderr.on('data', data => {
+      console.log(`data stderr: ${data}`)
+    })
+
+    process.on('error', error => {
+      console.log(`data error: ${error.message}`)
+    })
+
+    process.on('close', code => {
+      console.log(`data child process exited with code ${code}`)
+    })
   })
+  res.status(200).send()
+  const data = (await import('../scripts/cache.json')).default
+  console.log(data)
+  res.status(200).send(data)
 })
 
 app.post('/distribute', async (req, res) => {
@@ -146,4 +181,7 @@ app.post('/reset', async (req, res) => {
   res.status(200).send()
 })
 
-app.listen(port, () => console.log(`Server running on port ${port}`))
+app.listen(port, async () => {
+  await init()
+  console.log(`Server running on port ${port}`)
+})

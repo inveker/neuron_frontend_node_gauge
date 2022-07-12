@@ -6,7 +6,11 @@
   "scripts": {
     "generate": "npx hardhat compile && npx hardhat typechain",
     "server": "npx ts-node ./server/main.ts",
-    "test": "npx ts-mocha --timeout 200000 ./test/index.test.ts"
+    "test": "npx ts-mocha --timeout 200000 ./test/index.test.ts",
+    "distribute": "npx hardhat run ./scripts/deploy.ts --network localhost",
+    "reset": "npx hardhat run ./scripts/reset.ts --network localhost",
+    "time": "npx hardhat run ./scripts/time.ts --network localhost",
+    "data": "npx hardhat run ./scripts/data.ts --network localhost"
   },
   "author": "",
   "license": "ISC",
